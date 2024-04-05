@@ -11,6 +11,7 @@ typedef enum {
     INCDEC,
     MULDIV,
     ASSIGN,
+    ADDSUB_ASSIGN,
     LPAREN, RPAREN,
 
     AND, OR, XOR

@@ -34,11 +34,12 @@ TokenSet getToken(void)
         {
             lexeme[1] = c;
             lexeme[2] = '\0';
-           /* if(c == '+')
-                printf("++\n");
-            else
-                printf("--\n");*/
             return INCDEC;
+        }
+        else if (c == '=')
+        {
+            lexeme[1] = '=';
+            return ADDSUB_ASSIGN;
         }
         else
         {
