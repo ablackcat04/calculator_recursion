@@ -39,6 +39,16 @@ int evaluateTree(BTNode *root) {
                 rv = evaluateTree(root->right);
                 retval = lv | rv;
                 break;
+            case AND:
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
+                retval = lv & rv;
+                break;
+            case XOR:
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
+                retval = lv ^ rv;
+                break;
             case ADDSUB_ASSIGN:
                 lv = evaluateTree(root->left);
                 rv = evaluateTree(root->right);
@@ -50,11 +60,11 @@ int evaluateTree(BTNode *root) {
             case INCDEC:
                 if (strcmp(root->lexeme, "++a") == 0)
                     retval = setval(root->left->lexeme, evaluateTree(root->left)+1)-1;
-                else if (strcmp(root->lexeme, "++p") == 0)
+                else if (strcmp(root->lexeme, "++b") == 0)
                     retval = setval(root->left->lexeme, evaluateTree(root->left)+1);
                 else if (strcmp(root->lexeme, "--a") == 0)
                     retval = setval(root->left->lexeme, evaluateTree(root->left)-1)+1;
-                else if (strcmp(root->lexeme, "--p") == 0)
+                else if (strcmp(root->lexeme, "--b") == 0)
                     retval = setval(root->left->lexeme, evaluateTree(root->left)-1);
                 else
                     retval = evaluateTree(root->left);

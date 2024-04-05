@@ -33,6 +33,7 @@ int main() {
     printf(">> ");
     while (1) {
         statement();
+        printf("yeah!\n");
     }
     return 0;
 }

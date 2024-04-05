@@ -116,6 +116,7 @@ void statement(void)
 //assign_expr      := ID ASSIGN assign_expr | ID ADDSUB_ASSIGN assign_expr | or_expr
 BTNode *assign_expr(void)
 {
+    printf("assign_expr\n");
     BTNode *retp = NULL, *left = NULL;
 
     if (match(ID))
@@ -130,6 +131,7 @@ BTNode *assign_expr(void)
             retp->left = left;
             advance();
             retp->right = assign_expr();
+            printf("A\n");
         }
         else if (match(ADDSUB_ASSIGN))
         {
@@ -139,10 +141,48 @@ BTNode *assign_expr(void)
             advance();
             retp->right = assign_expr();
         }
+        else
+        {
+            int le = (int)strlen(getLexeme());
+            char st[le+5];
+            strcpy(st, getLexeme());
+
+            printf("Start putting ANYTHING back to stream\n");
+            printf("str=%s\nlen=%d\n", st, le);
+
+            if(le == 0)
+            {
+                ungetc('\n', stdin);
+            }
+            else
+            {
+                for (int i = le-1; i >= 0; i--)
+                {
+                    ungetc(st[i], stdin);
+                }
+            }
+
+
+
+
+
+            int len = (int)strlen(left->lexeme);
+
+            printf("Start putting ID back to stream\n");
+            printf("str=%s\nlen=%d\n", left->lexeme, len);
+
+            for (int i = len-1; i >= 0; i--)
+            {
+                ungetc(left->lexeme[i], stdin);
+            }
+
+            advance();
+
+            retp = or_expr();
+        }
     }
     else
     {
-        printf("or_expr");
         retp = or_expr();
     }
 
@@ -150,75 +190,236 @@ BTNode *assign_expr(void)
 }
 
 //or_expr          := xor_expr or_expr_tail
-BTNode *or_expr(void)
-{
-
+BTNode *or_expr(void) {
+    printf("or_expr\n");
+    BTNode *node = xor_expr();
+    return or_expr_tail(node);
 }
 
 //or_expr_tail     := OR xor_expr or_expr_tail | NiL
 BTNode *or_expr_tail(BTNode *left)
 {
-
+    printf("or_expr_tail\n");
+    if (match(OR))
+    {
+        printf("OR\n");
+        BTNode *node = makeNode(OR, getLexeme());
+        node->left = left;
+        advance();
+        node->right = xor_expr();
+        return or_expr_tail(node);
+    }
+    else
+    {
+        printf("NiL\n");
+        return left;
+    }
 }
 
 //xor_expr         := and_expr xor_expr_tail
 BTNode *xor_expr(void)
 {
-
+    printf("xor_expr\n");
+    BTNode *node = and_expr();
+    return xor_expr_tail(node);
 }
 
 //xor_expr_tail    := XOR and_expr xor_expr_tail | NiL
 BTNode *xor_expr_tail(BTNode *left)
 {
-
+    printf("xor_expr_tail\n");
+    if (match(XOR))
+    {
+        printf("XOR\n");
+        BTNode *node = makeNode(XOR, getLexeme());
+        node->left = left;
+        advance();
+        node->right = xor_expr();
+        return xor_expr_tail(node);
+    }
+    else
+    {
+        printf("NiL\n");
+        return left;
+    }
 }
 
 //and_expr         := addsub_expr and_expr_tail
 BTNode *and_expr(void)
 {
-
+    printf("and_expr\n");
+    BTNode *node = addsub_expr();
+    return and_expr_tail(node);
 }
 
 //and_expr_tail    := AND addsub_expr and_expr_tail | NiL
 BTNode *and_expr_tail(BTNode *left)
 {
-
+    printf("and_expr_tail\n");
+    if (match(AND))
+    {
+        printf("AND\n");
+        BTNode *node = makeNode(AND, getLexeme());
+        node->left = left;
+        advance();
+        node->right = xor_expr();
+        return and_expr_tail(node);
+    }
+    else
+    {
+        printf("NiL\n");
+        return left;
+    }
 }
 
 //addsub_expr      := muldiv_expr addsub_expr_tail
 BTNode *addsub_expr(void)
 {
-
+    printf("addsub_expr\n");
+    BTNode *node = muldiv_expr();
+    return addsub_expr_tail(node);
 }
 
 //addsub_expr_tail := ADDSUB muldiv_expr addsub_expr_tail | NiL
 BTNode *addsub_expr_tail(BTNode *left)
 {
-
+    printf("addsub_expr_tail\n");
+    if (match(ADDSUB))
+    {
+        printf("ADDSUB\n");
+        BTNode *node = makeNode(ADDSUB, getLexeme());
+        node->left = left;
+        advance();
+        node->right = muldiv_expr();
+        return addsub_expr_tail(node);
+    }
+    else
+    {
+        printf("NiL\n");
+        return left;
+    }
 }
 
 //muldiv_expr      := unary_expr muldiv_expr_tail
 BTNode *muldiv_expr(void)
 {
-
+    printf("muldiv_expr\n");
+    BTNode *node = unary_expr();
+    return muldiv_expr_tail(node);
 }
 
 //muldiv_expr_tail := MULDIV unary_expr muldiv_expr_tail | NiL
 BTNode *muldiv_expr_tail(BTNode *left)
 {
-
+    printf("muldiv_expr_tail\n");
+    if (match(MULDIV))
+    {
+        printf("MULDIV\n");
+        BTNode *node = makeNode(MULDIV, getLexeme());
+        node->left = left;
+        advance();
+        node->right = unary_expr();
+        return muldiv_expr_tail(node);
+    }
+    else
+    {
+        printf("NiL\n");
+        return left;
+    }
 }
 
 //unary_expr       := ADDSUB unary_expr | factor
 BTNode *unary_expr(void)
 {
-
+    printf("unary_expr\n");
+    if (match(ADDSUB))
+    {
+        BTNode *node = makeNode(MULDIV, getLexeme());
+        if (strcmp(getLexeme(), "+") == 0)
+        {
+            printf("+++++\n");
+            node->left = makeNode(INT, "1");
+            advance();
+            node->right = unary_expr();
+        }
+        else if (strcmp(getLexeme(), "-") == 0)
+        {
+            printf("-----\n");
+            node->left = makeNode(INT, "-1");
+            advance();
+            node->right = unary_expr();
+        }
+        else
+            err(UNKNOWN);
+    }
+    else
+    {
+        return factor();
+    }
 }
 
-//factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN
+//factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN | (ID INCDEC ??)
 BTNode *factor(void)
 {
+    BTNode *rept = NULL;
+    printf("factor\n");
+    if (match(INT))
+    {
+        rept = makeNode(INT, getLexeme());
+        advance();
+    }
+    else if (match(ID))
+    {
+        rept = makeNode(ID, getLexeme());
+        advance();
+    }
+    else if (match(INCDEC))
+    {
+        if (strcmp(getLexeme(), "++") == 0)
+        {
+            rept = makeNode(INCDEC, "++b");
+            advance();
+            if (match(ID))
+            {
+                rept->left = makeNode(ID, getLexeme());
+                advance();
+            }
+            else
+                err(SYNTAXERR);
+        }
+        else if (strcmp(getLexeme(), "--") == 0)
+        {
+            rept = makeNode(INCDEC, "--b");
+            advance();
+            if (match(ID))
+            {
+                rept->left = makeNode(ID, getLexeme());
+                advance();
+            }
+            else
+                err(SYNTAXERR);
+        }
+        else
+        {
 
+            err(UNDEFINED);
+        }
+    }
+    else if (match(LPAREN))
+    {
+        advance();
+        rept = assign_expr();
+        if (match(RPAREN))
+            advance();
+        else
+            err(SYNTAXERR);
+    }
+    else
+    {
+        err(SYNTAXERR);
+    }
+
+    return rept;
 }
 
 
@@ -239,9 +440,9 @@ BTNode *old_factor(void) {
         advance();
     } else if (match(INCDEC)) {
         if (strcmp(getLexeme(), "++") == 0)
-            retp = makeNode(INCDEC, "++p");
+            retp = makeNode(INCDEC, "++b");
         else
-            retp = makeNode(INCDEC, "--p");
+            retp = makeNode(INCDEC, "--b");
 
         advance();
         if (match(ID)) {
