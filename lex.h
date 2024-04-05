@@ -6,9 +6,8 @@
 // Token types
 typedef enum {
     UNKNOWN, END, ENDFILE, 
-    INT, ID, FACTOR,
+    INT, ID,
     ADDSUB,
-    INCDEC,
     MULDIV,
     ASSIGN,
     LPAREN, RPAREN,
