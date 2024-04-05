@@ -90,13 +90,63 @@ factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN
 //statement        := ENDFILE | END | assign_expr END
 void statement(void)
 {
+    BTNode *retp = NULL;
 
+    if (match(ENDFILE)) {
+        exit(0);
+    } else if (match(END)) {
+        printf(">> ");
+        advance();
+    } else {
+        retp = assign_expr();
+        if (match(END)) {
+            printf("%d\n", evaluateTree(retp));
+            printf("Prefix traversal: ");
+            printPrefix(retp);
+            printf("\n");
+            freeTree(retp);
+            printf(">> ");
+            advance();
+        } else {
+            error(SYNTAXERR);
+        }
+    }
 }
 
 //assign_expr      := ID ASSIGN assign_expr | ID ADDSUB_ASSIGN assign_expr | or_expr
 BTNode *assign_expr(void)
 {
+    BTNode *retp = NULL, *left = NULL;
 
+    if (match(ID))
+    {
+        printf("ID\n");
+        left = makeNode(ID, getLexeme());
+        advance();
+        if (match(ASSIGN))
+        {
+            printf("ASSIGN\n");
+            retp = makeNode(ASSIGN, getLexeme());
+            retp->left = left;
+            advance();
+            retp->right = assign_expr();
+        }
+        else if (match(ADDSUB_ASSIGN))
+        {
+            printf("ADDSUB ASSIGN\n");
+            retp = makeNode(ADDSUB_ASSIGN, getLexeme());
+            retp->left = left;
+            advance();
+            retp->right = assign_expr();
+        }
+    }
+    else
+    {
+        printf("or_expr");
+        retp = or_expr();
+    }
+
+    return retp;
 }
 
 //or_expr          := xor_expr or_expr_tail

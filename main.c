@@ -32,7 +32,7 @@ int main() {
     initTable();
     printf(">> ");
     while (1) {
-        old_statement();
+        statement();
     }
     return 0;
 }
