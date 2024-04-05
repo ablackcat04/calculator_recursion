@@ -156,7 +156,7 @@ BTNode *or_expr(void)
 }
 
 //or_expr_tail     := OR xor_expr or_expr_tail | NiL
-BTNode *or_expr_tail(void)
+BTNode *or_expr_tail(BTNode *left)
 {
 
 }
@@ -168,7 +168,7 @@ BTNode *xor_expr(void)
 }
 
 //xor_expr_tail    := XOR and_expr xor_expr_tail | NiL
-BTNode *xor_expr_tail(void)
+BTNode *xor_expr_tail(BTNode *left)
 {
 
 }
@@ -180,7 +180,7 @@ BTNode *and_expr(void)
 }
 
 //and_expr_tail    := AND addsub_expr and_expr_tail | NiL
-BTNode *and_expr_tail(void)
+BTNode *and_expr_tail(BTNode *left)
 {
 
 }
@@ -192,7 +192,7 @@ BTNode *addsub_expr(void)
 }
 
 //addsub_expr_tail := ADDSUB muldiv_expr addsub_expr_tail | NiL
-BTNode *addsub_expr_tail(void)
+BTNode *addsub_expr_tail(BTNode *left)
 {
 
 }
@@ -204,7 +204,7 @@ BTNode *muldiv_expr(void)
 }
 
 //muldiv_expr_tail := MULDIV unary_expr muldiv_expr_tail | NiL
-BTNode *muldiv_expr_tail(void)
+BTNode *muldiv_expr_tail(BTNode *left)
 {
 
 }

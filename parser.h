@@ -57,15 +57,15 @@ extern void freeTree(BTNode *root);
 extern void statement(void);
 extern BTNode *assign_expr(void);
 extern BTNode *or_expr(void);
-extern BTNode *or_expr_tail(void);
+extern BTNode *or_expr_tail(BTNode *left);
 extern BTNode *xor_expr(void);
-extern BTNode *xor_expr_tail(void);
+extern BTNode *xor_expr_tail(BTNode *left);
 extern BTNode *and_expr(void);
-extern BTNode *and_expr_tail(void);
+extern BTNode *and_expr_tail(BTNode *left);
 extern BTNode *addsub_expr(void);
-extern BTNode *addsub_expr_tail(void);
+extern BTNode *addsub_expr_tail(BTNode *left);
 extern BTNode *muldiv_expr(void);
-extern BTNode *muldiv_expr_tail(void);
+extern BTNode *muldiv_expr_tail(BTNode *left);
 extern BTNode *unary_expr(void);
 extern BTNode *factor(void);
 
@@ -88,11 +88,23 @@ factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN
  */
 
 extern void old_statement(void);
-extern BTNode *old_factor(void);
 extern BTNode *term(void);
 extern BTNode *term_tail(BTNode *left);
 extern BTNode *expr(void);
 extern BTNode *expr_tail(BTNode *left);
+extern BTNode *old_factor(void);
+
+// statement  :=  ENDFILE | END | expr END
+// expr    	  :=  term expr_tail
+// expr_tail  :=  ADDSUB term expr_tail | NiL
+// term 	  :=  factor term_tail
+// term_tail  :=  MULDIV factor term_tail| NiL
+// factor	  :=  INT | ADDSUB INT |
+//		   	      ID  | ADDSUB ID  |
+//		   	      ID ASSIGN expr |
+//		   	      LPAREN expr RPAREN |
+//		   	      ADDSUB LPAREN expr RPAREN
+
 
 // Print error message and exit the program
 extern void err(ErrorType errorNum);
