@@ -39,6 +39,14 @@ int evaluateTree(BTNode *root) {
                 rv = evaluateTree(root->right);
                 retval = lv | rv;
                 break;
+            case ADDSUB_ASSIGN:
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
+                if(strcmp(root->lexeme, "+=") == 0)
+                    retval = setval(root->left->lexeme, lv+rv);
+                else
+                    retval = setval(root->left->lexeme, lv-rv);
+                break;
             default:
                 retval = 0;
         }

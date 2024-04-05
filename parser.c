@@ -85,7 +85,15 @@ BTNode *factor(void) {
         left = makeNode(ID, getLexeme());
         advance();
         if (!match(ASSIGN)) {
-            retp = left;
+            if(!match(ADDSUB_ASSIGN))
+                retp = left;
+            else
+            {
+                retp = makeNode(ADDSUB_ASSIGN, getLexeme());
+                advance();
+                retp->left = left;
+                retp->right = expr();
+            }
         } else {
             retp = makeNode(ASSIGN, getLexeme());
             advance();
