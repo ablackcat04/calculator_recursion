@@ -52,6 +52,12 @@ TokenSet getToken(void)
         return ID;
     } else if (c == EOF) {
         return ENDFILE;
+    } else if (c == '&') {
+        return AND;
+    } else if (c == '|') {
+        return OR;
+    } else if (c == '^') {
+        return XOR;
     } else {
         return UNKNOWN;
     }
