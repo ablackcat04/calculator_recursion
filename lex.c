@@ -66,7 +66,15 @@ TokenSet getToken(void)
         return RPAREN;
     } else if (isalpha(c)) {
         lexeme[0] = c;
-        lexeme[1] = '\0';
+        c = fgetc(stdin);
+        i = 1;
+        while (isalpha(c) && i < MAXLEN) {
+            lexeme[i] = c;
+            ++i;
+            c = fgetc(stdin);
+        }
+        ungetc(c, stdin);
+        lexeme[i] = '\0';
         return ID;
     } else if (c == EOF) {
         return ENDFILE;

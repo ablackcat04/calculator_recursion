@@ -334,7 +334,7 @@ BTNode *unary_expr(void)
     printf("unary_expr\n");
     if (match(ADDSUB))
     {
-        BTNode *node = makeNode(MULDIV, getLexeme());
+        BTNode *node = makeNode(MULDIV, "*");
         if (strcmp(getLexeme(), "+") == 0)
         {
             printf("+++++\n");
@@ -351,6 +351,7 @@ BTNode *unary_expr(void)
         }
         else
             err(UNKNOWN);
+        return node;
     }
     else
     {
@@ -365,11 +366,13 @@ BTNode *factor(void)
     printf("factor\n");
     if (match(INT))
     {
+        printf("Get INT!\n");
         rept = makeNode(INT, getLexeme());
         advance();
     }
     else if (match(ID))
     {
+        printf("Get ID!\n");
         rept = makeNode(ID, getLexeme());
         advance();
     }
@@ -401,7 +404,6 @@ BTNode *factor(void)
         }
         else
         {
-
             err(UNDEFINED);
         }
     }
