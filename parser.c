@@ -82,11 +82,10 @@ BTNode *factor(void) {
         retp = makeNode(INT, getLexeme());
         advance();
     } else if (match(INCDEC)) {
-        printf("INCDEC\n");
         if (strcmp(getLexeme(), "++") == 0)
-            retp = makeNode(INCDEC, "+p");
+            retp = makeNode(INCDEC, "++p");
         else
-            retp = makeNode(INCDEC, "-p");
+            retp = makeNode(INCDEC, "--p");
 
         advance();
         if (match(ID)) {
@@ -97,7 +96,6 @@ BTNode *factor(void) {
             error(SYNTAXERR);
         }
     } else if (match(ID)) {
-        printf("ID\n");
         left = makeNode(ID, getLexeme());
         advance();
         if (!match(ASSIGN)) {
@@ -111,10 +109,9 @@ BTNode *factor(void) {
             else if (match(INCDEC))
             {
                 if (strcmp(getLexeme(), "++") == 0)
-                    retp = makeNode(INCDEC, "+a");
+                    retp = makeNode(INCDEC, "++a");
                 else
-                    retp = makeNode(INCDEC, "-a");
-                printf("INCDEC\n");
+                    retp = makeNode(INCDEC, "--a");
                 retp->left = left;
                 advance();
             }
