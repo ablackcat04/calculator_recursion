@@ -39,6 +39,7 @@ TokenSet getToken(void)
         else if (c == '=')
         {
             lexeme[1] = '=';
+            lexeme[2] = '\0';
             return ADDSUB_ASSIGN;
         }
         else

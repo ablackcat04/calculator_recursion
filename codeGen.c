@@ -47,6 +47,21 @@ int evaluateTree(BTNode *root) {
                 else
                     retval = setval(root->left->lexeme, lv-rv);
                 break;
+            case INCDEC:
+                if (strcmp(root->lexeme, "+a") == 0) {
+                    printf("+a\n");
+                    retval = setval(root->left->lexeme, evaluateTree(root->left)+1)-1;
+                } else if (strcmp(root->lexeme, "+p") == 0) {
+                    printf("+p\n");
+                    retval = setval(root->left->lexeme, evaluateTree(root->left)+1);
+                } else if (strcmp(root->lexeme, "-a") == 0) {
+                    printf("-a\n");
+                    retval = setval(root->left->lexeme, evaluateTree(root->left)-1)+1;
+                } else {
+                    printf("-p\n");
+                    retval = setval(root->left->lexeme, evaluateTree(root->left)-1);
+                }
+                break;
             default:
                 retval = 0;
         }
