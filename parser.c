@@ -70,12 +70,118 @@ void freeTree(BTNode *root) {
     }
 }
 
+/*
+statement        := ENDFILE | END | assign_expr END
+assign_expr      := ID ASSIGN assign_expr | ID ADDSUB_ASSIGN assign_expr | or_expr
+or_expr          := xor_expr or_expr_tail
+or_expr_tail     := OR xor_expr or_expr_tail | NiL
+xor_expr         := and_expr xor_expr_tail
+xor_expr_tail    := XOR and_expr xor_expr_tail | NiL
+and_expr         := addsub_expr and_expr_tail
+and_expr_tail    := AND addsub_expr and_expr_tail | NiL
+addsub_expr      := muldiv_expr addsub_expr_tail
+addsub_expr_tail := ADDSUB muldiv_expr addsub_expr_tail | NiL
+muldiv_expr      := unary_expr muldiv_expr_tail
+muldiv_expr_tail := MULDIV unary_expr muldiv_expr_tail | NiL
+unary_expr       := ADDSUB unary_expr | factor
+factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN
+ */
+
+//statement        := ENDFILE | END | assign_expr END
+void statement(void)
+{
+
+}
+
+//assign_expr      := ID ASSIGN assign_expr | ID ADDSUB_ASSIGN assign_expr | or_expr
+BTNode *assign_expr(void)
+{
+
+}
+
+//or_expr          := xor_expr or_expr_tail
+BTNode *or_expr(void)
+{
+
+}
+
+//or_expr_tail     := OR xor_expr or_expr_tail | NiL
+BTNode *or_expr_tail(void)
+{
+
+}
+
+//xor_expr         := and_expr xor_expr_tail
+BTNode *xor_expr(void)
+{
+
+}
+
+//xor_expr_tail    := XOR and_expr xor_expr_tail | NiL
+BTNode *xor_expr_tail(void)
+{
+
+}
+
+//and_expr         := addsub_expr and_expr_tail
+BTNode *and_expr(void)
+{
+
+}
+
+//and_expr_tail    := AND addsub_expr and_expr_tail | NiL
+BTNode *and_expr_tail(void)
+{
+
+}
+
+//addsub_expr      := muldiv_expr addsub_expr_tail
+BTNode *addsub_expr(void)
+{
+
+}
+
+//addsub_expr_tail := ADDSUB muldiv_expr addsub_expr_tail | NiL
+BTNode *addsub_expr_tail(void)
+{
+
+}
+
+//muldiv_expr      := unary_expr muldiv_expr_tail
+BTNode *muldiv_expr(void)
+{
+
+}
+
+//muldiv_expr_tail := MULDIV unary_expr muldiv_expr_tail | NiL
+BTNode *muldiv_expr_tail(void)
+{
+
+}
+
+//unary_expr       := ADDSUB unary_expr | factor
+BTNode *unary_expr(void)
+{
+
+}
+
+//factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN
+BTNode *factor(void)
+{
+
+}
+
+
+
+
+
+
 // factor := INT | ADDSUB INT |
 //		   	 ID  | ADDSUB ID  | 
 //		   	 ID ASSIGN expr |
 //		   	 LPAREN expr RPAREN |
 //		   	 ADDSUB LPAREN expr RPAREN
-BTNode *factor(void) {
+BTNode *old_factor(void) {
     BTNode *retp = NULL, *left = NULL;
 
     if (match(INT)) {
@@ -160,7 +266,7 @@ BTNode *factor(void) {
 
 // term := factor term_tail
 BTNode *term(void) {
-    BTNode *node = factor();
+    BTNode *node = old_factor();
     return term_tail(node);
 }
 
@@ -172,7 +278,7 @@ BTNode *term_tail(BTNode *left) {
         node = makeNode(MULDIV, getLexeme());
         advance();
         node->left = left;
-        node->right = factor();
+        node->right = old_factor();
         return term_tail(node);
     } else {
         return left;
@@ -209,7 +315,7 @@ BTNode *expr_tail(BTNode *left) {
 }
 
 // statement := ENDFILE | END | expr END
-void statement(void) {
+void old_statement(void) {
     BTNode *retp = NULL;
 
     if (match(ENDFILE)) {
