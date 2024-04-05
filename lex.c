@@ -28,8 +28,24 @@ TokenSet getToken(void)
         return INT;
     } else if (c == '+' || c == '-') {
         lexeme[0] = c;
-        lexeme[1] = '\0';
-        return ADDSUB;
+        c = fgetc(stdin);
+
+        if (c == lexeme[0])
+        {
+            lexeme[1] = c;
+            lexeme[2] = '\0';
+           /* if(c == '+')
+                printf("++\n");
+            else
+                printf("--\n");*/
+            return INCDEC;
+        }
+        else
+        {
+            lexeme[1] = '\0';
+            ungetc(c, stdin);
+            return ADDSUB;
+        }
     } else if (c == '*' || c == '/') {
         lexeme[0] = c;
         lexeme[1] = '\0';
