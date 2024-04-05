@@ -162,7 +162,15 @@ BTNode *expr_tail(BTNode *left) {
         node->left = left;
         node->right = term();
         return expr_tail(node);
-    } else {
+    }
+    else if (match(OR)) {
+        node = makeNode(OR, getLexeme());
+        advance();
+        node->left = left;
+        node->right = term();
+        return expr_tail(node);
+    }
+    else {
         return left;
     }
 }

@@ -34,6 +34,11 @@ int evaluateTree(BTNode *root) {
                     retval = lv / rv;
                 }
                 break;
+            case OR:
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
+                retval = lv | rv;
+                break;
             default:
                 retval = 0;
         }
