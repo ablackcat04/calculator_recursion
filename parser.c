@@ -149,7 +149,7 @@ BTNode *assign_expr(void)
         {
             printf("ADDSUB ASSIGN\n");
             if (is_new_var(left->lexeme))
-                err(SYNTAXERR);
+                error(SYNTAXERR);
 
             retp = makeNode(ADDSUB_ASSIGN, getLexeme());
             retp->left = left;
@@ -364,7 +364,7 @@ BTNode *unary_expr(void)
             node->right = unary_expr();
         }
         else
-            err(UNKNOWN);
+            error(UNKNOWN);
 
         return node;
     }
@@ -389,7 +389,7 @@ BTNode *factor(void)
     {
         printf("Get ID! ID=%s\n", getLexeme());
         if (is_new_var(getLexeme()))
-            err(SYNTAXERR);
+            error(SYNTAXERR);
         rept = makeNode(ID, getLexeme());
         advance();
     }
@@ -405,7 +405,7 @@ BTNode *factor(void)
                 advance();
             }
             else
-                err(SYNTAXERR);
+                error(SYNTAXERR);
         }
         else if (strcmp(getLexeme(), "--") == 0)
         {
@@ -414,16 +414,16 @@ BTNode *factor(void)
             if (match(ID))
             {
                 if (is_new_var(getLexeme()))
-                    err(SYNTAXERR);
+                    error(SYNTAXERR);
                 rept->left = makeNode(ID, getLexeme());
                 advance();
             }
             else
-                err(SYNTAXERR);
+                error(SYNTAXERR);
         }
         else
         {
-            err(UNDEFINED);
+            error(UNDEFINED);
         }
     }
     else if (match(LPAREN))
@@ -433,11 +433,11 @@ BTNode *factor(void)
         if (match(RPAREN))
             advance();
         else
-            err(SYNTAXERR);
+            error(SYNTAXERR);
     }
     else
     {
-        err(SYNTAXERR);
+        error(SYNTAXERR);
     }
 
     return rept;
