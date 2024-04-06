@@ -58,16 +58,21 @@ int evaluateTree(BTNode *root) {
                     retval = setval(root->left->lexeme, lv-rv);
                 break;
             case INCDEC:
-                if (strcmp(root->lexeme, "++a") == 0)
-                    retval = setval(root->left->lexeme, evaluateTree(root->left)+1)-1;
-                else if (strcmp(root->lexeme, "++b") == 0)
-                    retval = setval(root->left->lexeme, evaluateTree(root->left)+1);
-                else if (strcmp(root->lexeme, "--a") == 0)
-                    retval = setval(root->left->lexeme, evaluateTree(root->left)-1)+1;
-                else if (strcmp(root->lexeme, "--b") == 0)
-                    retval = setval(root->left->lexeme, evaluateTree(root->left)-1);
-                else
+                if (strcmp(root->lexeme, "++a") == 0) {
+                    retval = setval(root->left->lexeme, evaluateTree(root->left) + 1) - 1;
+                    strcpy(root->lexeme, "++");
+                } else if (strcmp(root->lexeme, "++b") == 0) {
+                    retval = setval(root->left->lexeme, evaluateTree(root->left) + 1);
+                    strcpy(root->lexeme, "++");
+                } else if (strcmp(root->lexeme, "--a") == 0) {
+                    retval = setval(root->left->lexeme, evaluateTree(root->left) - 1) + 1;
+                    strcpy(root->lexeme, "--");
+                } else if (strcmp(root->lexeme, "--b") == 0) {
+                    retval = setval(root->left->lexeme, evaluateTree(root->left) - 1);
+                    strcpy(root->lexeme, "--");
+                } else {
                     retval = evaluateTree(root->left);
+                }
 
                 break;
             default:
