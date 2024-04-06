@@ -64,11 +64,11 @@ TokenSet getToken(void)
     } else if (c == ')') {
         strcpy(lexeme, ")");
         return RPAREN;
-    } else if (isalpha(c)) {
+    } else if (isalpha(c) || c == '_') {
         lexeme[0] = c;
         c = fgetc(stdin);
         i = 1;
-        while (isalpha(c) && i < MAXLEN) {
+        while ( (isalpha(c) || isdigit(c) || c == '_') && i < MAXLEN) {
             lexeme[i] = c;
             ++i;
             c = fgetc(stdin);
@@ -79,10 +79,16 @@ TokenSet getToken(void)
     } else if (c == EOF) {
         return ENDFILE;
     } else if (c == '&') {
+        lexeme[0] = '&';
+        lexeme[1] = '\0';
         return AND;
     } else if (c == '|') {
+        lexeme[0] = '|';
+        lexeme[1] = '\0';
         return OR;
     } else if (c == '^') {
+        lexeme[0] = '^';
+        lexeme[1] = '\0';
         return XOR;
     } else {
         return UNKNOWN;

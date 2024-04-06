@@ -124,6 +124,7 @@ BTNode *assign_expr(void)
         printf("ID\n");
         left = makeNode(ID, getLexeme());
         advance();
+
         if (match(ASSIGN))
         {
             printf("ASSIGN\n");
@@ -132,6 +133,8 @@ BTNode *assign_expr(void)
             advance();
             retp->right = assign_expr();
             printf("A\n");
+
+            printf("%s\n%s\n", retp->left->lexeme, retp->right->lexeme);
         }
         else if (match(ADDSUB_ASSIGN))
         {
@@ -143,30 +146,26 @@ BTNode *assign_expr(void)
         }
         else
         {
-            int le = (int)strlen(getLexeme());
-            char st[le+5];
-            strcpy(st, getLexeme());
+            int len = (int)strlen(getLexeme());
+            char str[len + 5];
+            strcpy(str, getLexeme());
 
             printf("Start putting ANYTHING back to stream\n");
-            printf("str=%s\nlen=%d\n", st, le);
+            printf("str=%s\nlen=%d\n", str, len);
 
-            if(le == 0)
+            if(len == 0)
             {
                 ungetc('\n', stdin);
             }
             else
             {
-                for (int i = le-1; i >= 0; i--)
+                for (int i = len - 1; i >= 0; i--)
                 {
-                    ungetc(st[i], stdin);
+                    ungetc(str[i], stdin);
                 }
             }
 
-
-
-
-
-            int len = (int)strlen(left->lexeme);
+            len = (int)strlen(left->lexeme);
 
             printf("Start putting ID back to stream\n");
             printf("str=%s\nlen=%d\n", left->lexeme, len);
@@ -212,6 +211,7 @@ BTNode *or_expr_tail(BTNode *left)
     else
     {
         printf("NiL\n");
+        printf("Not or but %s\n", getLexeme());
         return left;
     }
 }
@@ -240,6 +240,7 @@ BTNode *xor_expr_tail(BTNode *left)
     else
     {
         printf("NiL\n");
+        printf("Not xor but %s\n", getLexeme());
         return left;
     }
 }
@@ -268,6 +269,7 @@ BTNode *and_expr_tail(BTNode *left)
     else
     {
         printf("NiL\n");
+        printf("Not and but %s\n", getLexeme());
         return left;
     }
 }
@@ -296,6 +298,7 @@ BTNode *addsub_expr_tail(BTNode *left)
     else
     {
         printf("NiL\n");
+        printf("Not addsub but %s\n", getLexeme());
         return left;
     }
 }
@@ -324,6 +327,7 @@ BTNode *muldiv_expr_tail(BTNode *left)
     else
     {
         printf("NiL\n");
+        printf("Not muldiv but %s\n", getLexeme());
         return left;
     }
 }
@@ -372,7 +376,7 @@ BTNode *factor(void)
     }
     else if (match(ID))
     {
-        printf("Get ID!\n");
+        printf("Get ID! ID=%s\n", getLexeme());
         rept = makeNode(ID, getLexeme());
         advance();
     }
