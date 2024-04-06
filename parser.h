@@ -1,6 +1,7 @@
 #ifndef __PARSER__
 #define __PARSER__
 
+#include <stdbool.h>
 #include "lex.h"
 #define TBLSIZE 64
 
@@ -108,5 +109,7 @@ extern BTNode *old_factor(void);
 
 // Print error message and exit the program
 extern void err(ErrorType errorNum);
+
+extern bool is_new_var(char *str);
 
 #endif // __PARSER__

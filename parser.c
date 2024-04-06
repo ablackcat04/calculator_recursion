@@ -17,6 +17,15 @@ void initTable(void) {
     sbcount = 3;
 }
 
+bool is_new_var(char *str) {
+    for (int i = 0; i < sbcount; i++) {
+        if (strcmp(str, table[i].name) == 0)
+            return false;
+    }
+    printf("=========new var detected!========\n");
+    return true;
+}
+
 int getval(char *str) {
     int i = 0;
 
@@ -139,6 +148,9 @@ BTNode *assign_expr(void)
         else if (match(ADDSUB_ASSIGN))
         {
             printf("ADDSUB ASSIGN\n");
+            if (is_new_var(left->lexeme))
+                err(SYNTAXERR);
+
             retp = makeNode(ADDSUB_ASSIGN, getLexeme());
             retp->left = left;
             advance();
@@ -376,6 +388,8 @@ BTNode *factor(void)
     else if (match(ID))
     {
         printf("Get ID! ID=%s\n", getLexeme());
+        if (is_new_var(getLexeme()))
+            err(SYNTAXERR);
         rept = makeNode(ID, getLexeme());
         advance();
     }
@@ -399,6 +413,8 @@ BTNode *factor(void)
             advance();
             if (match(ID))
             {
+                if (is_new_var(getLexeme()))
+                    err(SYNTAXERR);
                 rept->left = makeNode(ID, getLexeme());
                 advance();
             }

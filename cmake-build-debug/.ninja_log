@@ -73,3 +73,10 @@
 61	121	7340696572397293	calculator_recursion.exe	82d962c6c553480b
 2	94	7340700698181969	CMakeFiles/calculator_recursion.dir/parser.c.obj	86830effac59d15c
 95	158	7340700698792839	calculator_recursion.exe	82d962c6c553480b
+1	97	7340704729126164	CMakeFiles/calculator_recursion.dir/parser.c.obj	86830effac59d15c
+98	162	7340704729750855	calculator_recursion.exe	82d962c6c553480b
+9	100	7340711472869916	CMakeFiles/calculator_recursion.dir/parser.c.obj	86830effac59d15c
+9	73	7340711767690643	CMakeFiles/calculator_recursion.dir/main.c.obj	af9909728ab0b703
+2	74	7340711767700959	CMakeFiles/calculator_recursion.dir/codeGen.c.obj	e4ea2ec5349d9c8
+6	98	7340711767935613	CMakeFiles/calculator_recursion.dir/parser.c.obj	86830effac59d15c
+98	159	7340711768520679	calculator_recursion.exe	82d962c6c553480b
