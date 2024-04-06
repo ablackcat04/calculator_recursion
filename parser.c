@@ -338,23 +338,22 @@ BTNode *unary_expr(void)
     printf("unary_expr\n");
     if (match(ADDSUB))
     {
-        BTNode *node = makeNode(MULDIV, "*");
+        BTNode *node = NULL;
         if (strcmp(getLexeme(), "+") == 0)
         {
-            printf("+++++\n");
-            node->left = makeNode(INT, "1");
             advance();
-            node->right = unary_expr();
+            node = unary_expr();
         }
         else if (strcmp(getLexeme(), "-") == 0)
         {
-            printf("-----\n");
-            node->left = makeNode(INT, "-1");
+            node = makeNode(ADDSUB, "-");
+            node->left = makeNode(INT, "0");
             advance();
             node->right = unary_expr();
         }
         else
             err(UNKNOWN);
+
         return node;
     }
     else

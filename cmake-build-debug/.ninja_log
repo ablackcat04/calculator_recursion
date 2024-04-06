@@ -71,3 +71,5 @@
 143	255	7340695786496019	calculator_recursion.exe	82d962c6c553480b
 2	61	7340696571830936	CMakeFiles/calculator_recursion.dir/lex.c.obj	292241c8e85b66ba
 61	121	7340696572397293	calculator_recursion.exe	82d962c6c553480b
+2	94	7340700698181969	CMakeFiles/calculator_recursion.dir/parser.c.obj	86830effac59d15c
+95	158	7340700698792839	calculator_recursion.exe	82d962c6c553480b
