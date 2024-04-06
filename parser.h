@@ -7,7 +7,7 @@
 
 // Set PRINTERR to 1 to print error message while calling error()
 // Make sure you set PRINTERR to 0 before you submit your code
-#define PRINTERR 1
+#define PRINTERR 0
 
 // Call this macro to print error message and exit the program
 // This will also print where you called it in your program
