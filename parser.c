@@ -70,6 +70,14 @@ BTNode *makeNode(TokenSet tok, const char *lexe) {
     node->val = 0;
     node->left = NULL;
     node->right = NULL;
+
+    if (tok == INT)
+        node->Placement = CONST;
+    else if (tok == END || tok == ENDFILE)
+        node->Placement = NOTDATA;
+    else
+        node->Placement = UNDEF;
+
     return node;
 }
 
