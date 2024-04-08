@@ -72,8 +72,9 @@ extern BTNode *muldiv_expr_tail(BTNode *left);
 extern BTNode *unary_expr(void);
 extern BTNode *factor(void);
 
-
 /*
+    NEW GRAMMAR!!
+
 statement        := ENDFILE | END | assign_expr END
 assign_expr      := ID ASSIGN assign_expr | ID ADDSUB_ASSIGN assign_expr | or_expr
 or_expr          := xor_expr or_expr_tail
@@ -90,12 +91,21 @@ unary_expr       := ADDSUB unary_expr | factor
 factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN
  */
 
+
+
+
+
+
+
+
 extern void old_statement(void);
 extern BTNode *term(void);
 extern BTNode *term_tail(BTNode *left);
 extern BTNode *expr(void);
 extern BTNode *expr_tail(BTNode *left);
 extern BTNode *old_factor(void);
+
+//OLD GRAMMAR!!
 
 // statement  :=  ENDFILE | END | expr END
 // expr    	  :=  term expr_tail
