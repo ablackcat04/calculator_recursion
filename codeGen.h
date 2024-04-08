@@ -35,4 +35,6 @@ extern Reassembly newReassmbly(int, DataPlacementSet, int, int);
 
 extern void initRegister(void);
 
+extern int inRegister(char*);
+
 #endif // __CODEGEN__

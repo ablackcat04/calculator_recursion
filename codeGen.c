@@ -16,6 +16,18 @@ Reassembly newReassmbly(int rtvl, DataPlacementSet placement, int regi, int cons
     return R;
 }
 
+int inRegister(char* str)
+{
+    for (int i = 0; i < 8; ++i) {
+        if (r[1].is_id && strcmp(str, r[i].id) == 0)
+        {
+            printf("Find %s in register%d\n", str, i);
+            return i;
+        }
+    }
+    return -1;
+}
+
 void initRegister()
 {
     r[0].is_id = true;
@@ -53,13 +65,11 @@ Reassembly generateAssembly(BTNode *root)
         Reassembly R;
         switch (root->data) {
             case ASSIGN:
-
                 for (i = 0; i < 8; ++i) {
                     if (r[i].is_id && strcmp(r[i].id, root->left->lexeme) == 0)
                     {
                         printf("yeah! r%d=%s\n", i, root->left->lexeme);
 
-                        Reassembly R;
                         R = generateAssembly(root->right);
 
                         if (R.placement == CONST)
