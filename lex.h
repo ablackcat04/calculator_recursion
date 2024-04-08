@@ -13,13 +13,11 @@ typedef enum {
     ASSIGN,
     ADDSUB_ASSIGN,
     LPAREN, RPAREN,
-
     AND, OR, XOR
-
 } TokenSet;
 
 typedef enum {
-    UNREF,
+    UNDEF, NOTDATA,
     CONST,
     MEMORY,
     REGISTER
