@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include "lex.h"
 #include "parser.h"
+#include "codeGen.h"
 
 // This package is a calculator
 // It works like a Python interpretor
@@ -30,6 +31,7 @@
 
 int main() {
     initTable();
+    initRegister();
     printf(">> ");
     while (1) {
         statement();
