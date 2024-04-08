@@ -676,7 +676,7 @@ void old_statement(void) {
 }
 
 void err(ErrorType errorNum) {
-    if (PRINTERR) {
+    if (PRINTERR_ERR) {
         fprintf(stderr, "error: ");
         switch (errorNum) {
             case MISPAREN:

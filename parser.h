@@ -8,6 +8,7 @@
 // Set PRINTERR to 1 to print error message while calling error()
 // Make sure you set PRINTERR to 0 before you submit your code
 #define PRINTERR 0
+#define PRINTERR_ERR 1
 
 // Call this macro to print error message and exit the program
 // This will also print where you called it in your program
@@ -33,6 +34,7 @@ typedef struct _Node {
     TokenSet data;
     int val;
     char lexeme[MAXLEN];
+    char location[32];
     struct _Node *left; 
     struct _Node *right;
 } BTNode;
