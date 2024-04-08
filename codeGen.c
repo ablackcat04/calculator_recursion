@@ -50,6 +50,7 @@ Reassembly generateAssembly(BTNode *root)
     if (root != NULL)
     {
         int i;
+        Reassembly R;
         switch (root->data) {
             case ASSIGN:
 
@@ -61,12 +62,49 @@ Reassembly generateAssembly(BTNode *root)
                         Reassembly R;
                         R = generateAssembly(root->right);
 
-                        printf("MOV r%d %d\n", i, 0);
-                        break;
+                        if (R.placement == CONST)
+                        {
+                            printf("MOV r%d %d\n", i, R.constant);
+                        }
+                        else if (R.placement == REGISTER)
+                        {
+                            printf("MOV r%d r%d\n", i, R.regist);
+                        }
+
+                        R.placement = REGISTER;
+                        R.regist = i;
+
+                        return R;
                     }
                 }
 
                 break;
+            case INT:
+                R = newReassmbly(atoi(root->lexeme), CONST, -1, atoi(root->lexeme));
+                printf("RRRR %d\n", R.constant);
+                return R;
+            case ID:
+                if (inRegister(root->lexeme) != -1)
+                {
+                    R = newReassmbly(getval(root->lexeme), REGISTER, inRegister(root->lexeme), -1);
+                }
+                else
+                {
+                    printf("MOV ra %d\n", getval(root->lexeme));
+                }
+
+                return R;
+            case ADDSUB:
+            case INCDEC:
+            case MULDIV:
+            case ADDSUB_ASSIGN:
+            case AND:
+            case OR:
+            case XOR:
+            default:
+                printf("Nooo\n");
+                R = newReassmbly(0, UNDEF, -1, -1);
+                return R;
         }
     }
 }
