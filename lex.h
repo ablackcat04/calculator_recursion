@@ -18,6 +18,13 @@ typedef enum {
 
 } TokenSet;
 
+typedef enum {
+    UNREF,
+    CONST,
+    MEMORY,
+    REGISTER
+} DataPlacementSet;
+
 // Test if a token matches the current token 
 extern int match(TokenSet token);
 
