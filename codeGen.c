@@ -36,7 +36,25 @@ void initRegister()
 
 void generateAssembly(BTNode *root)
 {
+    if (root != NULL)
+    {
+        int i;
+        switch (root->data) {
+            case ASSIGN:
 
+                for (i = 0; i < 8; ++i) {
+                    if (r[i].is_id && strcmp(r[i].id, root->left->lexeme) == 0)
+                    {
+                        printf("yeah! r%d=%s\n", i, root->left->lexeme);
+
+                        printf("MOV r%d %d\n", i, 0);
+                        break;
+                    }
+                }
+
+                break;
+        }
+    }
 }
 
 int evaluateTree(BTNode *root) {
