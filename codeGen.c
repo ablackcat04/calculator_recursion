@@ -33,6 +33,8 @@ int evaluateTree(BTNode *root) {
                 if (strcmp(root->lexeme, "*") == 0) {
                     retval = lv * rv;
                 } else if (strcmp(root->lexeme, "/") == 0) {
+                    //TODO: deal with div by zero error separately, if right side has variable don't print EXIT(1)
+
                     if (rv == 0)
                         error(DIVZERO);
                     retval = lv / rv;
