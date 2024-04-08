@@ -32,6 +32,7 @@ typedef struct {
 // Structure of a tree node
 typedef struct _Node {
     TokenSet data;
+    DataPlacementSet Placement;
     int val;
     char lexeme[MAXLEN];
     char location[32];
