@@ -10,6 +10,9 @@ extern int evaluateTree(BTNode *root);
 // Print the syntax tree in prefix
 extern void printPrefix(BTNode *root);
 
+// Generate the assembly code for this expression
+extern void generateAssembly(BTNode *root);
+
 typedef struct regi
 {
     bool is_id;

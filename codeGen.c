@@ -34,6 +34,11 @@ void initRegister()
     printf("MOV r2 [8]\n");
 }
 
+void generateAssembly(BTNode *root)
+{
+
+}
+
 int evaluateTree(BTNode *root) {
     int retval = 0, lv = 0, rv = 0;
 

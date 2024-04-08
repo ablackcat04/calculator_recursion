@@ -123,6 +123,9 @@ void statement(void)
             printf("Prefix traversal: ");
             printPrefix(retp);
             printf("\n");
+
+            generateAssembly(retp);
+
             freeTree(retp);
             printf(">> ");
             advance();
