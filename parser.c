@@ -120,12 +120,12 @@ void statement(void)
         retp = assign_expr();
         if (match(END)) {
             printf("%d\n", evaluateTree(retp));
-            printf("Prefix traversal: ");
-            printPrefix(retp);
-            printf("\n");
 
             generateAssembly(retp);
 
+            printf("Prefix traversal: ");
+            printPrefix(retp);
+            printf("\n");
             freeTree(retp);
             printf(">> ");
             advance();

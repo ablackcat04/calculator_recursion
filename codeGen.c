@@ -5,6 +5,17 @@
 
 Register r[8];
 
+Reassembly newReassmbly(int rtvl, DataPlacementSet placement, int regi, int cons)
+{
+    Reassembly R;
+    R.return_value = rtvl;
+    R.placement = placement;
+    R.regist = regi;
+    R.constant = cons;
+
+    return R;
+}
+
 void initRegister()
 {
     r[0].is_id = true;
@@ -34,7 +45,7 @@ void initRegister()
     printf("MOV r2 [8]\n");
 }
 
-void generateAssembly(BTNode *root)
+Reassembly generateAssembly(BTNode *root)
 {
     if (root != NULL)
     {
@@ -46,6 +57,9 @@ void generateAssembly(BTNode *root)
                     if (r[i].is_id && strcmp(r[i].id, root->left->lexeme) == 0)
                     {
                         printf("yeah! r%d=%s\n", i, root->left->lexeme);
+
+                        Reassembly R;
+                        R = generateAssembly(root->right);
 
                         printf("MOV r%d %d\n", i, 0);
                         break;
