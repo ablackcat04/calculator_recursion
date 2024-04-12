@@ -443,7 +443,7 @@ BTNode *unary_expr(void)
     }
 }
 
-//factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN | (ID INCDEC ??)
+//factor           := INT | ID | INCDEC ID | LPAREN assign_expr RPAREN
 BTNode *factor(void)
 {
     BTNode *rept = NULL;

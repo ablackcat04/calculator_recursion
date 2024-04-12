@@ -8,3 +8,5 @@
 1	66	7342850821773226	CMakeFiles/calculator_recursion.dir/codeGen.c.obj	e4ea2ec5349d9c8
 5	79	7342850821899695	CMakeFiles/calculator_recursion.dir/parser.c.obj	86830effac59d15c
 80	141	7342850822491564	calculator_recursion.exe	82d962c6c553480b
+2	208	7346059258581166	CMakeFiles/calculator_recursion.dir/parser.c.obj	86830effac59d15c
+208	287	7346059259336633	calculator_recursion.exe	82d962c6c553480b
