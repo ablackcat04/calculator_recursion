@@ -121,7 +121,7 @@ void statement(void)
         if (match(END)) {
             printf("%d\n", evaluateTree(retp));
 
-            generateAssembly(retp);
+            //generateAssembly(retp);
 
             printf("Prefix traversal: ");
             printPrefix(retp);
