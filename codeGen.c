@@ -19,13 +19,37 @@ Reassembly newReassmbly(int rtvl, DataPlacementSet placement, int regi, int cons
 int inRegister(char* str)
 {
     for (int i = 0; i < 8; ++i) {
-        if (r[1].is_id && strcmp(str, r[i].id) == 0)
+        if (r[i].is_id && strcmp(str, r[i].id) == 0)
         {
             printf("Find %s in register%d\n", str, i);
             return i;
         }
     }
     return -1;
+}
+
+int putInResister(char* str)
+{
+    for (int i = 8; i >= 0; --i) {
+        if (!r[i].is_id) {
+            r[i].is_id = true;
+            strcpy(r[i].id, str);
+            r[i].value = getval(str);
+            return i;
+        }
+    }
+}
+
+int findFreeRegister()
+{
+    for (int i = 8; i >= 0; --i) {
+        if (!r[i].is_id) {
+            return i;
+        }
+    }
+
+    printf("MOV [] r7");
+    r[7].is_id = false;
 }
 
 void initRegister()
@@ -65,27 +89,39 @@ Reassembly generateAssembly(BTNode *root)
         Reassembly R;
         switch (root->data) {
             case ASSIGN:
-                for (i = 0; i < 8; ++i) {
-                    if (r[i].is_id && strcmp(r[i].id, root->left->lexeme) == 0)
-                    {
-                        printf("yeah! r%d=%s\n", i, root->left->lexeme);
+                i = inRegister(root->lexeme);
+                R = generateAssembly(root->right);
+                if (i != -1) {
 
-                        R = generateAssembly(root->right);
 
-                        if (R.placement == CONST)
-                        {
-                            printf("MOV r%d %d\n", i, R.constant);
-                        }
-                        else if (R.placement == REGISTER)
-                        {
-                            printf("MOV r%d r%d\n", i, R.regist);
-                        }
-
-                        R.placement = REGISTER;
-                        R.regist = i;
-
-                        return R;
+                    if (R.placement == CONST) {
+                        printf("MOV r%d %d\n", i, R.constant);
+                    } else if (R.placement == REGISTER) {
+                        printf("MOV r%d r%d\n", i, R.regist);
+                    } else {
+                        error(UNDEFINED);
                     }
+
+                    R.placement = REGISTER;
+                    R.regist = i;
+
+                    return R;
+                } else {
+
+
+                    if (R.placement == CONST) {
+                        printf("MOV r const\n");
+                        printf("MOV [] r");
+                    } else if (R.placement == REGISTER) {
+                        printf("MOV [] r%d\n", R.regist);
+                    } else {
+                        error(UNDEFINED);
+                    }
+
+                    R.placement = REGISTER;
+                    R.regist = i;
+
+                    return R;
                 }
 
                 break;
@@ -100,7 +136,7 @@ Reassembly generateAssembly(BTNode *root)
                 }
                 else
                 {
-                    printf("MOV ra %d\n", getval(root->lexeme));
+                    printf("MOV %d []\n", getval(root->lexeme));
                 }
 
                 return R;

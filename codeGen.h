@@ -37,4 +37,8 @@ extern void initRegister(void);
 
 extern int inRegister(char*);
 
+extern int putInResister(char*);
+
+extern int findFreeRegister(void);
+
 #endif // __CODEGEN__
