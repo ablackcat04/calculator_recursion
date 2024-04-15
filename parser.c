@@ -26,6 +26,17 @@ bool is_new_var(char *str) {
     return true;
 }
 
+int getmem(char *str) {
+    int i = 0;
+
+    for (i = 0; i < sbcount; i++) {
+        if (strcmp(str, table[i].name) == 0)
+            return i;
+    }
+
+    return -1;
+}
+
 int getval(char *str) {
     int i = 0;
 
