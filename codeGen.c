@@ -57,20 +57,18 @@ ReturnType evaluateTree(BTNode *root) {
                     ry = findRegAvailableAndUse();
                     printf("MOV r%d [%d]\n", ry, rv.value);
                     printf("MOV [%d] r%d\n", getmem(root->left->lexeme), ry);
-                    isRegAvailable[ry] = true;
                 } else if (rv.type == CONST) {
                     ry = findRegAvailableAndUse();
                     printf("MOV r%d %d\n", ry, rv.value);
                     printf("MOV [%d] r%d\n", getmem(root->left->lexeme), ry);
-                    isRegAvailable[ry] = true;
                 } else if (rv.type == REG) {
                     ry = rv.value;
                     printf("MOV [%d] r%d\n", getmem(root->left->lexeme), ry);
-                    isRegAvailable[ry] = true;
                 } else {
                     printf("Warning: rv without type\n");
                 }
 
+                retval.value = ry;
 
                 break;
             case ADDSUB:
