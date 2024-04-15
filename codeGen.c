@@ -21,7 +21,7 @@ int findRegAvailableAndUse() {
     return -1;
 }
 
-
+//TODO: make register upperbound by coping things more to mem
 ReturnType evaluateTree(BTNode *root) {
     //int lv = 0, rv = 0;
     ReturnType retval, lv, rv;
