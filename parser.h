@@ -45,6 +45,8 @@ extern Symbol table[TBLSIZE];
 // Initialize the symbol table with builtin variables
 extern void initTable(void);
 
+extern int getmem(char *str);
+
 // Get the value of a variable
 extern int getval(char *str);
 

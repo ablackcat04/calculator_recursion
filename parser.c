@@ -31,7 +31,7 @@ int getmem(char *str) {
 
     for (i = 0; i < sbcount; i++) {
         if (strcmp(str, table[i].name) == 0)
-            return i;
+            return i*4;
     }
 
     return -1;
