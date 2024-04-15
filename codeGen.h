@@ -3,12 +3,6 @@
 
 #include "parser.h"
 
-// Evaluate the syntax tree
-extern int evaluateTree(BTNode *root);
-
-// Print the syntax tree in prefix
-extern void printPrefix(BTNode *root);
-
 typedef enum rs
 {
     VAR, CONST, REG
@@ -20,6 +14,14 @@ typedef struct rtt
     ReturnSet type;
     int value;
 }ReturnType;
+
+// Evaluate the syntax tree
+extern ReturnType evaluateTree(BTNode *root);
+
+// Print the syntax tree in prefix
+extern void printPrefix(BTNode *root);
+
+
 
 
 #endif // __CODEGEN__

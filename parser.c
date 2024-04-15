@@ -109,7 +109,7 @@ void statement(void)
     } else {
         retp = assign_expr();
         if (match(END)) {
-            printf("%d\n", evaluateTree(retp));
+            printf("%d\n", evaluateTree(retp).rtvl);
             printf("Prefix traversal: ");
             printPrefix(retp);
             printf("\n");
