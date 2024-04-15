@@ -50,9 +50,8 @@ ReturnType evaluateTree(BTNode *root) {
             case ASSIGN:
                 rv = evaluateTree(root->right);
                 retval.rtvl = setval(root->left->lexeme, rv.rtvl);
+
                 retval.type = REG;
-
-
                 if (rv.type == VAR) {
                     ry = findRegAvailableAndUse();
                     printf("MOV r%d [%d]\n", ry, rv.value);
@@ -67,7 +66,6 @@ ReturnType evaluateTree(BTNode *root) {
                 } else {
                     printf("Warning: rv without type\n");
                 }
-
                 retval.value = ry;
 
                 break;
@@ -262,10 +260,40 @@ ReturnType evaluateTree(BTNode *root) {
             case ADDSUB_ASSIGN:
                 lv = evaluateTree(root->left);
                 rv = evaluateTree(root->right);
-                if(strcmp(root->lexeme, "+=") == 0)
+                if(strcmp(root->lexeme, "+=") == 0) {
                     retval.rtvl = setval(root->left->lexeme, lv.rtvl + rv.rtvl);
-                else
+                    strcpy(command, "ADD");
+                } else {
                     retval.rtvl = setval(root->left->lexeme, lv.rtvl - rv.rtvl);
+                    strcpy(command, "SUB");
+                }
+
+                retval.type = REG;
+                rx = findRegAvailableAndUse();
+                if (rv.type == VAR) {
+                    ry = findRegAvailableAndUse();
+                    printf("MOV r%d [%d]\n", rx, getmem(root->left->lexeme));
+                    printf("MOV r%d [%d]\n", ry, rv.value);
+                    printf("%s r%d r%d\n", command, rx, ry);
+                    printf("MOV [%d] r%d\n", getmem(root->left->lexeme), rx);
+                    isRegAvailable[ry] = true;
+                } else if (rv.type == CONST) {
+                    ry = findRegAvailableAndUse();
+                    printf("MOV r%d [%d]\n", rx, getmem(root->left->lexeme));
+                    printf("MOV r%d %d\n", ry, rv.value);
+                    printf("%s r%d r%d\n", command, rx, ry);
+                    printf("MOV [%d] r%d\n", getmem(root->left->lexeme), rx);
+                    isRegAvailable[ry] = true;
+                } else if (rv.type == REG) {
+                    ry = rv.value;
+                    printf("MOV r%d [%d]\n", rx, getmem(root->left->lexeme));
+                    printf("%s r%d r%d\n", command, rx, ry);
+                    printf("MOV [%d] r%d\n", getmem(root->left->lexeme), rx);
+                    isRegAvailable[ry] = true;
+                } else {
+                    printf("Warning: rv without type\n");
+                }
+                retval.value = rx;
 
                 break;
             case INCDEC:
