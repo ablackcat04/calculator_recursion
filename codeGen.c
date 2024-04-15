@@ -322,6 +322,79 @@ ReturnType evaluateTree(BTNode *root) {
                 rv = evaluateTree(root->right);
                 retval.rtvl = lv.rtvl & rv.rtvl;
 
+                strcpy(command, "AND");
+
+                retval.type = REG;
+                if (lv.type == REG) {
+                    rx = lv.value;
+                    if (rv.type == REG) {
+                        ry = rv.value;
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else if (rv.type == VAR) {
+                        ry = findRegAvailableAndUse();
+                        printf("MOV r%d [%d]\n", ry, rv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else if (rv.type == CONST) {
+                        ry = findRegAvailableAndUse();
+                        printf("MOV r%d %d\n", ry, rv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else {
+                        printf("Warning: rv without type\n");
+                    }
+                    retval.value = rx;
+                } else if (lv.type == VAR) {
+                    rx = findRegAvailableAndUse();
+                    if (rv.type == REG) {
+                        ry = rv.value;
+                        printf("MOV r%d [%d]\n", rx, lv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else if (rv.type == VAR) {
+                        ry = findRegAvailableAndUse();
+                        printf("MOV r%d [%d]\n", rx, lv.value);
+                        printf("MOV r%d [%d]\n", ry, rv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else if (rv.type == CONST) {
+                        ry = findRegAvailableAndUse();
+                        printf("MOV r%d [%d]\n", rx, lv.value);
+                        printf("MOV r%d %d\n", ry, rv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else {
+                        printf("Warning: rv without type\n");
+                    }
+                    retval.value = rx;
+                } else if (lv.type == CONST) {
+                    rx = findRegAvailableAndUse();
+                    if (rv.type == REG) {
+                        ry = rv.value;
+                        printf("MOV r%d %d\n", rx, lv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else if (rv.type == VAR) {
+                        ry = findRegAvailableAndUse();
+                        printf("MOV r%d %d\n", rx, lv.value);
+                        printf("MOV r%d [%d]\n", ry, rv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else if (rv.type == CONST) {
+                        ry = findRegAvailableAndUse();
+                        printf("MOV r%d %d\n", rx, lv.value);
+                        printf("MOV r%d %d\n", ry, rv.value);
+                        printf("%s r%d r%d\n", command, rx, ry);
+                        isRegAvailable[ry] = true;
+                    } else {
+                        printf("Warning: rv without type\n");
+                    }
+                    retval.value = rx;
+                } else {
+                    printf("Warning: lv without type\n");
+                }
+
                 break;
             case XOR:
                 lv = evaluateTree(root->left);
