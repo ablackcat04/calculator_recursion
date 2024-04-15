@@ -3,6 +3,25 @@
 #include <string.h>
 #include "codeGen.h"
 
+bool isRegAvailable[NUM_OF_REG];
+
+void initReg() {
+    for (int i = 0; i < NUM_OF_REG; ++i) {
+        isRegAvailable[i] = true;
+    }
+}
+
+int findRegAvailableAndUse() {
+    for (int i = 0; i < NUM_OF_REG; ++i) {
+        if (isRegAvailable[i]) {
+            isRegAvailable[i] = false;
+            return i;
+        }
+    }
+    return -1;
+}
+
+
 ReturnType evaluateTree(BTNode *root) {
     //int lv = 0, rv = 0;
     ReturnType retval, lv, rv;
