@@ -391,13 +391,13 @@ int oldEvaluateTree(BTNode *root) {
                 if (strcmp(root->lexeme, "++a") == 0) {
                     retval = setval(root->left->lexeme, oldEvaluateTree(root->left) + 1) - 1;
                     strcpy(root->lexeme, "++");
-                } else if (strcmp(root->lexeme, "++b") == 0) {
+                } else if (strcmp(root->lexeme, "++") == 0) {
                     retval = setval(root->left->lexeme, oldEvaluateTree(root->left) + 1);
                     strcpy(root->lexeme, "++");
                 } else if (strcmp(root->lexeme, "--a") == 0) {
                     retval = setval(root->left->lexeme, oldEvaluateTree(root->left) - 1) + 1;
                     strcpy(root->lexeme, "--");
-                } else if (strcmp(root->lexeme, "--b") == 0) {
+                } else if (strcmp(root->lexeme, "--") == 0) {
                     retval = setval(root->left->lexeme, oldEvaluateTree(root->left) - 1);
                     strcpy(root->lexeme, "--");
                 } else {
