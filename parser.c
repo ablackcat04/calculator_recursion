@@ -169,11 +169,6 @@ BTNode *assign_expr(void)
             char str[len + 5];
             strcpy(str, getLexeme());
 
-            if (PRINTERR) {
-                printf("Start putting ANYTHING back to stream\n");
-                printf("str=%s\nlen=%d\n", str, len);
-            }
-
             if(len == 0)
             {
                 ungetc('\n', stdin);
