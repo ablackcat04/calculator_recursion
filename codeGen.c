@@ -4,72 +4,134 @@
 #include "codeGen.h"
 
 ReturnType evaluateTree(BTNode *root) {
-    int lv = 0, rv = 0;
-    ReturnType retval;
+    //int lv = 0, rv = 0;
+    ReturnType retval, lv, rv;
     retval.rtvl = 0;
+    lv.rtvl = 0;
+    rv.rtvl = 0;
+
+    char command[3];
 
     if (root != NULL) {
         switch (root->data) {
             case ID:
                 retval.rtvl = getval(root->lexeme);
+                retval.type = VAR;
+                retval.value = getmem(root->lexeme);
+                //printf("[%d]\n", retval.value);
                 break;
             case INT:
                 retval.rtvl = atoi(root->lexeme);
+                retval.type = CONST;
+                retval.value = retval.rtvl;
+                //printf("%d\n", retval.value);
                 break;
             case ASSIGN:
-                rv = evaluateTree(root->right).rtvl;
-                retval.rtvl = setval(root->left->lexeme, rv);
+                rv = evaluateTree(root->right);
+                retval.rtvl = setval(root->left->lexeme, rv.rtvl);
+                retval.type = REG;
+
+                if (rv.type == VAR) {
+                    printf("MOV rx [%d]\n", rv.value);
+                    printf("MOV [%d] rx\n", getmem(root->left->lexeme));
+                } else if (rv.type == CONST) {
+                    printf("MOV rx %d\n", rv.value);
+                    printf("MOV [%d] rx\n", getmem(root->left->lexeme));
+                } else if (rv.type == REG) {
+                    printf("MOV [%d] rx\n", getmem(root->left->lexeme));
+                }
 
                 break;
             case ADDSUB:
-                lv = evaluateTree(root->left).rtvl;
-                rv = evaluateTree(root->right).rtvl;
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
                 if (strcmp(root->lexeme, "+") == 0) {
-                    retval.rtvl = lv + rv;
+                    retval.rtvl = lv.rtvl + rv.rtvl;
+                    strcpy(command, "ADD");
                 } else if (strcmp(root->lexeme, "-") == 0) {
-                    retval.rtvl = lv - rv;
+                    retval.rtvl = lv.rtvl - rv.rtvl;
+                    strcpy(command, "SUB");
+                }
+                retval.type = REG;
+
+                if (lv.type == REG) {
+                    if (rv.type == REG) {
+                        printf("%s rx ry\n", command);
+                    } else if (rv.type == VAR) {
+                        printf("MOV ry [%d]\n", rv.value);
+                        printf("%s rx ry\n", command);
+                    } else if (rv.type == CONST) {
+                        printf("MOV ry %d\n", rv.value);
+                        printf("%s rx ry\n", command);
+                    }
+                } else if (lv.type == VAR) {
+                    if (rv.type == REG) {
+                        printf("MOV rx [%d]\n", lv.value);
+                        printf("%s rx ry\n", command);
+                    } else if (rv.type == VAR) {
+                        printf("MOV rx [%d]\n", lv.value);
+                        printf("MOV ry [%d]\n", rv.value);
+                        printf("%s rx ry\n", command);
+                    } else if (rv.type == CONST) {
+                        printf("MOV rx [%d]\n", lv.value);
+                        printf("MOV ry %d\n", rv.value);
+                        printf("%s rx ry\n", command);
+                    }
+                } else if (lv.type == CONST) {
+                    if (rv.type == REG) {
+                        printf("MOV rx %d\n", lv.value);
+                        printf("%s rx ry\n", command);
+                    } else if (rv.type == VAR) {
+                        printf("MOV rx %d\n", lv.value);
+                        printf("MOV ry [%d]\n", rv.value);
+                        printf("%s rx ry\n", command);
+                    } else if (rv.type == CONST) {
+                        printf("MOV rx %d\n", lv.value);
+                        printf("MOV ry %d\n", rv.value);
+                        printf("%s rx ry\n", command);
+                    }
                 }
 
                 break;
             case MULDIV:
-                lv = evaluateTree(root->left).rtvl;
-                rv = evaluateTree(root->right).rtvl;
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
                 if (strcmp(root->lexeme, "*") == 0) {
-                    retval.rtvl = lv * rv;
+                    retval.rtvl = lv.rtvl * rv.rtvl;
                 } else if (strcmp(root->lexeme, "/") == 0) {
                     //TODO: deal with div by zero error separately, if right side has variable don't print EXIT(1)
 
-                    if (rv == 0)
+                    if (rv.rtvl == 0)
                         error(DIVZERO);
-                    retval.rtvl = lv / rv;
+                    retval.rtvl = lv.rtvl / rv.rtvl;
                 }
 
                 break;
             case OR:
-                lv = evaluateTree(root->left).rtvl;
-                rv = evaluateTree(root->right).rtvl;
-                retval.rtvl = lv | rv;
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
+                retval.rtvl = lv.rtvl | rv.rtvl;
 
                 break;
             case AND:
-                lv = evaluateTree(root->left).rtvl;
-                rv = evaluateTree(root->right).rtvl;
-                retval.rtvl = lv & rv;
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
+                retval.rtvl = lv.rtvl & rv.rtvl;
 
                 break;
             case XOR:
-                lv = evaluateTree(root->left).rtvl;
-                rv = evaluateTree(root->right).rtvl;
-                retval.rtvl = lv ^ rv;
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
+                retval.rtvl = lv.rtvl ^ rv.rtvl;
 
                 break;
             case ADDSUB_ASSIGN:
-                lv = evaluateTree(root->left).rtvl;
-                rv = evaluateTree(root->right).rtvl;
+                lv = evaluateTree(root->left);
+                rv = evaluateTree(root->right);
                 if(strcmp(root->lexeme, "+=") == 0)
-                    retval.rtvl = setval(root->left->lexeme, lv+rv);
+                    retval.rtvl = setval(root->left->lexeme, lv.rtvl + rv.rtvl);
                 else
-                    retval.rtvl = setval(root->left->lexeme, lv-rv);
+                    retval.rtvl = setval(root->left->lexeme, lv.rtvl - rv.rtvl);
 
                 break;
             case INCDEC:
