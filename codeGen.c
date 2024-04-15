@@ -297,20 +297,14 @@ ReturnType evaluateTree(BTNode *root) {
 
                 break;
             case INCDEC:
-                if (strcmp(root->lexeme, "++a") == 0) {
-                    retval.rtvl = setval(root->left->lexeme, evaluateTree(root->left).rtvl + 1) - 1;
-                    strcpy(root->lexeme, "++");
-                } else if (strcmp(root->lexeme, "++b") == 0) {
+                if (strcmp(root->lexeme, "++") == 0) {
                     retval.rtvl = setval(root->left->lexeme, evaluateTree(root->left).rtvl + 1);
                     strcpy(root->lexeme, "++");
-                } else if (strcmp(root->lexeme, "--a") == 0) {
-                    retval.rtvl = setval(root->left->lexeme, evaluateTree(root->left).rtvl - 1) + 1;
-                    strcpy(root->lexeme, "--");
-                } else if (strcmp(root->lexeme, "--b") == 0) {
+                    strcpy(command, "ADD");
+                } else {
                     retval.rtvl = setval(root->left->lexeme, evaluateTree(root->left).rtvl - 1);
                     strcpy(root->lexeme, "--");
-                } else {
-                    retval.rtvl = evaluateTree(root->left).rtvl;
+                    strcpy(command, "SUB");
                 }
 
                 break;

@@ -374,7 +374,7 @@ BTNode *factor(void)
     {
         if (strcmp(getLexeme(), "++") == 0)
         {
-            rept = makeNode(INCDEC, "++b");
+            rept = makeNode(INCDEC, "++");
             advance();
             if (match(ID))
             {
@@ -386,7 +386,7 @@ BTNode *factor(void)
         }
         else if (strcmp(getLexeme(), "--") == 0)
         {
-            rept = makeNode(INCDEC, "--b");
+            rept = makeNode(INCDEC, "--");
             advance();
             if (match(ID))
             {
@@ -460,15 +460,6 @@ BTNode *old_factor(void) {
                 advance();
                 retp->left = left;
                 retp->right = expr();
-            }
-            else if (match(INCDEC))
-            {
-                if (strcmp(getLexeme(), "++") == 0)
-                    retp = makeNode(INCDEC, "++a");
-                else
-                    retp = makeNode(INCDEC, "--a");
-                retp->left = left;
-                advance();
             }
             else
             {
