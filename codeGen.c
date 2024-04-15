@@ -307,6 +307,18 @@ ReturnType evaluateTree(BTNode *root) {
                     strcpy(command, "SUB");
                 }
 
+                retval.type = REG;
+                rx = findRegAvailableAndUse();
+
+                ry = findRegAvailableAndUse();
+                printf("MOV r%d [%d]\n", rx, getmem(root->left->lexeme));
+                printf("MOV r%d %d\n", ry, 1);
+                printf("%s r%d r%d\n", command, rx, ry);
+                printf("MOV [%d] r%d\n", getmem(root->left->lexeme), rx);
+                isRegAvailable[ry] = true;
+
+                retval.value = rx;
+
                 break;
             default:
                 retval.rtvl = 0;
