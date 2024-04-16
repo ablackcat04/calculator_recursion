@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "calculator_recursion",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "calculator_recursion::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-calculator_recursion-Debug-aeac2694b1d75d9cd5bc.json",
+					"name" : "calculator_recursion",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "combined_project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-combined_project-Debug-bc4bd75312efc4570536.json",
+					"name" : "combined_project",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/wuru8/Desktop/Coding/Introduction to Programming II/project1/MiniProject1_Package/package/calculator_recursion/cmake-build-debug",
+		"source" : "C:/Users/wuru8/Desktop/Coding/Introduction to Programming II/project1/MiniProject1_Package/package/calculator_recursion"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
