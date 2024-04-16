@@ -8,13 +8,14 @@
 // Set PRINTERR to 1 to print error message while calling error()
 // Make sure you set PRINTERR to 0 before you submit your code
 #define PRINTERR 0
-#define PRINTERR_ERR 1
+#define PRINTERR_ERR 0
 
 // Call this macro to print error message and exit the program
 // This will also print where you called it in your program
 #define error(errorNum) { \
     if (PRINTERR) \
         fprintf(stderr, "error() called at %s:%d: ", __FILE__, __LINE__); \
+    printf("EXIT 1\n");                      \
     err(errorNum); \
 }
 
