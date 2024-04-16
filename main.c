@@ -30,8 +30,11 @@ extern void initReg();
 //		   	      ADDSUB LPAREN expr RPAREN
 
 int main() {
+    freopen("input.txt", "w", stdout);
     initTable();
-    printf(">> ");
+    if (PRINTERR) {
+        printf(">> ");
+    }
     while (1) {
         initReg();
         statement();
