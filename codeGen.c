@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "codeGen.h"
+#include <stdbool.h>
 
 bool isRegAvailable[NUM_OF_REG];
 
@@ -19,6 +20,15 @@ int findRegAvailableAndUse() {
         }
     }
     return -1;
+}
+
+bool hasIDInTree(BTNode* node) {
+    if (node == NULL)
+        return false;
+    else if (node->data == ID)
+        return true;
+    else
+        return hasIDInTree(node->left) || hasIDInTree(node->right);
 }
 
 //TODO: make register upperbound by coping things more to mem
@@ -159,11 +169,16 @@ ReturnType evaluateTree(BTNode *root) {
                     retval.rtvl = lv.rtvl * rv.rtvl;
                     strcpy(command, "MUL");
                 } else if (strcmp(root->lexeme, "/") == 0) {
-                    //TODO: deal with div by zero error separately, if right side has variable don't print EXIT(1)
 
-                    if (rv.rtvl == 0)
-                        error(DIVZERO);
-                    retval.rtvl = lv.rtvl / rv.rtvl;
+                    if (rv.rtvl == 0) {
+                        if (!hasIDInTree(root->right)) {
+                            error(DIVZERO);
+                        } else {
+                            retval.rtvl = -1;
+                        }
+                    } else {
+                        retval.rtvl = lv.rtvl / rv.rtvl;
+                    }
                     strcpy(command, "DIV");
                 }
 
