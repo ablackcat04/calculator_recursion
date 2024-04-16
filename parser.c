@@ -111,6 +111,10 @@ void statement(void)
     BTNode *retp = NULL;
 
     if (match(ENDFILE)) {
+        printf("MOV r0 [0]\n");
+        printf("MOV r1 [4]\n");
+        printf("MOV r2 [8]\n");
+        printf("EXIT 0\n");
         exit(0);
     } else if (match(END)) {
         printf(">> ");
