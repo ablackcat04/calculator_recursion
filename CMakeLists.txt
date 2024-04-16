@@ -13,3 +13,6 @@ add_executable(calculator_recursion
         main.c
         parser.c
         parser.h)
+
+add_executable(combined_project
+        ./combined/combined.c)

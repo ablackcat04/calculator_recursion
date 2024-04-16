@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "calculator_recursion",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -41,6 +43,13 @@
 					"id" : "calculator_recursion::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-calculator_recursion-Debug-aeac2694b1d75d9cd5bc.json",
 					"name" : "calculator_recursion",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "combined_project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-combined_project-Debug-bc4bd75312efc4570536.json",
+					"name" : "combined_project",
 					"projectIndex" : 0
 				}
 			]
