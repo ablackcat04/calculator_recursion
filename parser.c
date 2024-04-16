@@ -22,7 +22,6 @@ bool is_new_var(char *str) {
         if (strcmp(str, table[i].name) == 0)
             return false;
     }
-
     return true;
 }
 
@@ -33,7 +32,6 @@ int getmem(char *str) {
         if (strcmp(str, table[i].name) == 0)
             return i*4;
     }
-
     return -1;
 }
 
@@ -415,164 +413,6 @@ BTNode *factor(void)
     return rept;
 }
 
-
-
-
-
-
-// factor := INT | ADDSUB INT |
-//		   	 ID  | ADDSUB ID  | 
-//		   	 ID ASSIGN expr |
-//		   	 LPAREN expr RPAREN |
-//		   	 ADDSUB LPAREN expr RPAREN
-BTNode *old_factor(void) {
-    BTNode *retp = NULL, *left = NULL;
-
-    if (match(INT)) {
-        retp = makeNode(INT, getLexeme());
-        advance();
-    } else if (match(INCDEC)) {
-        if (strcmp(getLexeme(), "++") == 0)
-            retp = makeNode(INCDEC, "++b");
-        else
-            retp = makeNode(INCDEC, "--b");
-
-        advance();
-        if (match(ID)) {
-            left = makeNode(ID, getLexeme());
-            retp->left = left;
-            advance();
-        } else {
-            error(SYNTAXERR);
-        }
-    } else if (match(ID)) {
-        left = makeNode(ID, getLexeme());
-        advance();
-        if (!match(ASSIGN)) {
-            if(match(ADDSUB_ASSIGN))
-            {
-                retp = makeNode(ADDSUB_ASSIGN, getLexeme());
-                advance();
-                retp->left = left;
-                retp->right = expr();
-            }
-            else
-            {
-                retp = left;
-            }
-        } else {
-            retp = makeNode(ASSIGN, getLexeme());
-            advance();
-            retp->left = left;
-            retp->right = expr();
-        }
-    } else if (match(ADDSUB)) {
-        retp = makeNode(ADDSUB, getLexeme());
-        retp->left = makeNode(INT, "0");
-        advance();
-        if (match(INT)) {
-            retp->right = makeNode(INT, getLexeme());
-            advance();
-        } else if (match(ID)) {
-            retp->right = makeNode(ID, getLexeme());
-            advance();
-        } else if (match(LPAREN)) {
-            advance();
-            retp->right = expr();
-            if (match(RPAREN))
-                advance();
-            else
-                error(MISPAREN);
-        } else {
-            error(NOTNUMID);
-        }
-    } else if (match(LPAREN)) {
-        advance();
-        retp = expr();
-        if (match(RPAREN))
-            advance();
-        else
-            error(MISPAREN);
-    } else {
-        error(NOTNUMID);
-    }
-    return retp;
-}
-
-// term := factor term_tail
-BTNode *term(void) {
-    BTNode *node = old_factor();
-    return term_tail(node);
-}
-
-// term_tail := MULDIV factor term_tail | NiL
-BTNode *term_tail(BTNode *left) {
-    BTNode *node = NULL;
-
-    if (match(MULDIV)) {
-        node = makeNode(MULDIV, getLexeme());
-        advance();
-        node->left = left;
-        node->right = old_factor();
-        return term_tail(node);
-    } else {
-        return left;
-    }
-}
-
-// expr := term expr_tail
-BTNode *expr(void) {
-    BTNode *node = term();
-    return expr_tail(node);
-}
-
-// expr_tail := ADDSUB term expr_tail | NiL
-BTNode *expr_tail(BTNode *left) {
-    BTNode *node = NULL;
-
-    if (match(ADDSUB)) {
-        node = makeNode(ADDSUB, getLexeme());
-        advance();
-        node->left = left;
-        node->right = term();
-        return expr_tail(node);
-    }
-    else if (match(OR)) {
-        node = makeNode(OR, getLexeme());
-        advance();
-        node->left = left;
-        node->right = term();
-        return expr_tail(node);
-    }
-    else {
-        return left;
-    }
-}
-
-// statement := ENDFILE | END | expr END
-void old_statement(void) {
-    BTNode *retp = NULL;
-
-    if (match(ENDFILE)) {
-        exit(0);
-    } else if (match(END)) {
-        printf(">> ");
-        advance();
-    } else {
-        retp = expr();
-        if (match(END)) {
-            printf("%d\n", evaluateTree(retp));
-            printf("Prefix traversal: ");
-            printPrefix(retp);
-            printf("\n");
-            freeTree(retp);
-            printf(">> ");
-            advance();
-        } else {
-            error(SYNTAXERR);
-        }
-    }
-}
 
 void err(ErrorType errorNum) {
     if (PRINTERR_ERR) {
