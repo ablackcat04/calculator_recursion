@@ -21,20 +21,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2898ea86-d749-4724-bb9a-eef59e52d3c5" name="Changes" comment="handled the div by 0 error separately">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/calculator_recursion.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-04-16T11-37-09-0441.json" beforeDir="false" />
+    <list default="true" id="2898ea86-d749-4724-bb9a-eef59e52d3c5" name="Changes" comment="abstract assembly code generation to a function">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/calculator_recursion.dir/codeGen.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/calculator_recursion.dir/codeGen.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/calculator_recursion.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/calculator_recursion.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codeGen.c" beforeDir="false" afterPath="$PROJECT_DIR$/codeGen.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,23 +152,7 @@
       <workItem from="1713270948976" duration="137000" />
       <workItem from="1713271096683" duration="75000" />
       <workItem from="1713271181453" duration="597000" />
-      <workItem from="1713534893446" duration="5148000" />
-    </task>
-    <task id="LOCAL-00024" summary="add a todo(divzero)">
-      <option name="closed" value="true" />
-      <created>1712558678359</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1712558678359</updated>
-    </task>
-    <task id="LOCAL-00025" summary="add the DataPlacementSet enum type">
-      <option name="closed" value="true" />
-      <created>1712560372105</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1712560372105</updated>
+      <workItem from="1713534893446" duration="6933000" />
     </task>
     <task id="LOCAL-00026" summary="comment more about grammar">
       <option name="closed" value="true" />
@@ -552,7 +530,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713270524890</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="ramdom3">
+      <option name="closed" value="true" />
+      <created>1713542474645</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1713542474645</updated>
+    </task>
+    <task id="LOCAL-00074" summary="abstract assembly code generation to a function">
+      <option name="closed" value="true" />
+      <created>1713543193657</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1713543193657</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,8 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="getmem function" />
-    <MESSAGE value="getmem function return pos*4&#10;(from pos)" />
     <MESSAGE value="simple assembly code generation&#10;(ID, INt, ASSIGN, ADDSUB, without dealing with register)" />
     <MESSAGE value="REG construct" />
     <MESSAGE value="update assign and addsub to generate assmebly code" />
@@ -613,6 +605,8 @@
     <MESSAGE value="print improve" />
     <MESSAGE value="combined file" />
     <MESSAGE value="handled the div by 0 error separately" />
-    <option name="LAST_COMMIT_MESSAGE" value="handled the div by 0 error separately" />
+    <MESSAGE value="ramdom3" />
+    <MESSAGE value="abstract assembly code generation to a function" />
+    <option name="LAST_COMMIT_MESSAGE" value="abstract assembly code generation to a function" />
   </component>
 </project>

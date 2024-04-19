@@ -31,10 +31,17 @@ bool hasIDInTree(BTNode* node) {
         return hasIDInTree(node->left) || hasIDInTree(node->right);
 }
 
-ReturnType generateAssembly(ReturnType lv, ReturnType rv, char* command) {
+ReturnType generateAssembly(ReturnType lv, ReturnType rv, char* command, bool hasVarInTree, int rtvl) {
     ReturnType retval;
     int rx = 0;
     int ry = 0;
+    
+    if (!hasVarInTree) {
+        retval.type = CONST;
+        retval.rtvl = rtvl;
+        retval.value = rtvl;
+        return retval;
+    }
 
     if (lv.type == REG) {
         rx = lv.value;
@@ -106,13 +113,10 @@ ReturnType generateAssembly(ReturnType lv, ReturnType rv, char* command) {
         printf("Warning: lv without type\n");
     }
 
+    retval.rtvl = rtvl;
     retval.type = REG;
     return retval;
 }
-
-
-
-
 
 //TODO: make register upperbound by coping things more to mem
 ReturnType evaluateTree(BTNode *root) {
@@ -173,7 +177,7 @@ ReturnType evaluateTree(BTNode *root) {
                     strcpy(command, "SUB");
                 }
 
-                retval = generateAssembly(lv, rv, command);
+                retval = generateAssembly(lv, rv, command, hasIDInTree(root), retval.rtvl);
                 break;
             case MULDIV:
                 lv = evaluateTree(root->left);
@@ -195,7 +199,7 @@ ReturnType evaluateTree(BTNode *root) {
                     strcpy(command, "DIV");
                 }
 
-                retval = generateAssembly(lv, rv, command);
+                retval = generateAssembly(lv, rv, command, hasIDInTree(root), retval.rtvl);
 
                 break;
             case OR:
@@ -204,7 +208,7 @@ ReturnType evaluateTree(BTNode *root) {
                 retval.rtvl = lv.rtvl | rv.rtvl;
                 strcpy(command, "OR");
 
-                retval = generateAssembly(lv, rv, command);
+                retval = generateAssembly(lv, rv, command, hasIDInTree(root), retval.rtvl);
 
                 break;
             case AND:
@@ -214,7 +218,7 @@ ReturnType evaluateTree(BTNode *root) {
 
                 strcpy(command, "AND");
 
-                retval = generateAssembly(lv, rv, command);
+                retval = generateAssembly(lv, rv, command, hasIDInTree(root), retval.rtvl);
 
                 break;
             case XOR:
@@ -224,7 +228,7 @@ ReturnType evaluateTree(BTNode *root) {
 
                 strcpy(command, "XOR");
 
-                retval = generateAssembly(lv, rv, command);
+                retval = generateAssembly(lv, rv, command, hasIDInTree(root), retval.rtvl);
 
                 break;
             case ADDSUB_ASSIGN:
