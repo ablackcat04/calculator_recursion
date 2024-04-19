@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="calculator_recursion" targetName="calculator_recursion" />
+      <config projectName="calculator_recursion" targetName="combined_project" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2898ea86-d749-4724-bb9a-eef59e52d3c5" name="Changes" comment="handled the div by 0 error separately">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/calculator_recursion.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-04-16T11-37-09-0441.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/calculator_recursion.dir/codeGen.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/calculator_recursion.dir/codeGen.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/calculator_recursion.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/calculator_recursion.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/parser.c" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="clangTidyViaClangd" value="false" />
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ablackcat04&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="ablackcat04" />
+        <option name="repository" value="calculator_recursion" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="26e7110e-61e0-46d3-95ff-4ed814b204db" />
+        <option name="url" value="https://github.com/ablackcat04/calculator_recursion.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="3.4" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2edKMUX44eUcgW2O4nCMyFdpEfD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;CMake Application.calculator_recursion.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.combined.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.combined_project.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.conbined_project.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;stable__dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wuru8/Desktop/Coding/Introduction to Programming II/project1/MiniProject1_Package/package/calculator_recursion/CMakeLists.txt&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="CMake Application.calculator_recursion">
+    <configuration name="calculator_recursion" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="calculator_recursion" TARGET_NAME="calculator_recursion" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="calculator_recursion" RUN_TARGET_NAME="calculator_recursion">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="combined_project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="calculator_recursion" TARGET_NAME="combined_project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="calculator_recursion" RUN_TARGET_NAME="combined_project">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.calculator_recursion" />
+      <item itemvalue="CMake Application.combined_project" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2898ea86-d749-4724-bb9a-eef59e52d3c5" name="Changes" comment="" />
+      <created>1712228966995</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712228966995</updated>
+      <workItem from="1712228968068" duration="4706000" />
+      <workItem from="1712290514779" duration="26194000" />
+      <workItem from="1712366008751" duration="5641000" />
+      <workItem from="1712387186450" duration="1224000" />
+      <workItem from="1712557548191" duration="16380000" />
+      <workItem from="1712641535071" duration="16000" />
+      <workItem from="1712854420748" duration="239000" />
+      <workItem from="1712899555928" duration="885000" />
+      <workItem from="1712993300965" duration="4000" />
+      <workItem from="1713097443224" duration="592000" />
+      <workItem from="1713145839549" duration="18107000" />
+      <workItem from="1713230791746" duration="35000" />
+      <workItem from="1713253459163" duration="6565000" />
+      <workItem from="1713264132340" duration="6599000" />
+      <workItem from="1713270948976" duration="137000" />
+      <workItem from="1713271096683" duration="75000" />
+      <workItem from="1713271181453" duration="597000" />
+      <workItem from="1713534893446" duration="5148000" />
+    </task>
+    <task id="LOCAL-00024" summary="add a todo(divzero)">
+      <option name="closed" value="true" />
+      <created>1712558678359</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1712558678359</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add the DataPlacementSet enum type">
+      <option name="closed" value="true" />
+      <created>1712560372105</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1712560372105</updated>
+    </task>
+    <task id="LOCAL-00026" summary="comment more about grammar">
+      <option name="closed" value="true" />
+      <created>1712560485862</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1712560485862</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add DataPlacementSet Placement in BTNode">
+      <option name="closed" value="true" />
+      <created>1712560610714</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1712560610714</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add notdata in daataPlacement">
+      <option name="closed" value="true" />
+      <created>1712566769345</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1712566769345</updated>
+    </task>
+    <task id="LOCAL-00029" summary="initialize node-&gt;Placement">
+      <option name="closed" value="true" />
+      <created>1712566796461</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1712566796461</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add register struct">
+      <option name="closed" value="true" />
+      <created>1712568763708</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1712568763708</updated>
+    </task>
+    <task id="LOCAL-00031" summary="add the initRegister() function">
+      <option name="closed" value="true" />
+      <created>1712568789302</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1712568789302</updated>
+    </task>
+    <task id="LOCAL-00032" summary="include codeGen.h in main.c">
+      <option name="closed" value="true" />
+      <created>1712568825384</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1712568825384</updated>
+    </task>
+    <task id="LOCAL-00033" summary="create generateAssembly() function, not defined tho">
+      <option name="closed" value="true" />
+      <created>1712569590923</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1712569590923</updated>
+    </task>
+    <task id="LOCAL-00034" summary="generateAssembly assign partly written">
+      <option name="closed" value="true" />
+      <created>1712573144028</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1712573144028</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add Reassembly type">
+      <option name="closed" value="true" />
+      <created>1712573833652</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1712573833652</updated>
+    </task>
+    <task id="LOCAL-00036" summary="implement some assembly code generation">
+      <option name="closed" value="true" />
+      <created>1712579833601</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1712579833601</updated>
+    </task>
+    <task id="LOCAL-00037" summary="new inRegister function">
+      <option name="closed" value="true" />
+      <created>1712579866324</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1712579866324</updated>
+    </task>
+    <task id="LOCAL-00038" summary="putInResister / findFreeRegister">
+      <option name="closed" value="true" />
+      <created>1712902298119</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1712902298119</updated>
+    </task>
+    <task id="LOCAL-00039" summary="random">
+      <option name="closed" value="true" />
+      <created>1712902311866</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1712902311866</updated>
+    </task>
+    <task id="LOCAL-00040" summary="random2">
+      <option name="closed" value="true" />
+      <created>1712902812153</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1712902812153</updated>
+    </task>
+    <task id="LOCAL-00041" summary="delete debug print">
+      <option name="closed" value="true" />
+      <created>1713166683514</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1713166683514</updated>
+    </task>
+    <task id="LOCAL-00042" summary="make evaluteTree one old and one new">
+      <option name="closed" value="true" />
+      <created>1713178643112</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1713178643112</updated>
+    </task>
+    <task id="LOCAL-00043" summary="new enum Returnset and struct Returntype">
+      <option name="closed" value="true" />
+      <created>1713179377135</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1713179377135</updated>
+    </task>
+    <task id="LOCAL-00044" summary="change return type of evaluate tree to ReturnType, and make it works">
+      <option name="closed" value="true" />
+      <created>1713180026304</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1713180026304</updated>
+    </task>
+    <task id="LOCAL-00045" summary="getmem function">
+      <option name="closed" value="true" />
+      <created>1713180467686</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1713180467686</updated>
+    </task>
+    <task id="LOCAL-00046" summary="getmem function return pos*4&#10;(from pos)">
+      <option name="closed" value="true" />
+      <created>1713180738096</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1713180738096</updated>
+    </task>
+    <task id="LOCAL-00047" summary="simple assembly code generation&#10;(ID, INt, ASSIGN, ADDSUB, without dealing with register)">
+      <option name="closed" value="true" />
+      <created>1713183092963</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1713183092963</updated>
+    </task>
+    <task id="LOCAL-00048" summary="REG construct">
+      <option name="closed" value="true" />
+      <created>1713186923773</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1713186923773</updated>
+    </task>
+    <task id="LOCAL-00049" summary="update assign and addsub to generate assmebly code">
+      <option name="closed" value="true" />
+      <created>1713186967523</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1713186967523</updated>
+    </task>
+    <task id="LOCAL-00050" summary="fixed a bug(assign ry wrong)">
+      <option name="closed" value="true" />
+      <created>1713187583055</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1713187583055</updated>
+    </task>
+    <task id="LOCAL-00051" summary="fixed a bug(assign ry wrong)">
+      <option name="closed" value="true" />
+      <created>1713188093008</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1713188093008</updated>
+    </task>
+    <task id="LOCAL-00052" summary="add muldiv support to assembely code generation">
+      <option name="closed" value="true" />
+      <created>1713188126767</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1713188126767</updated>
+    </task>
+    <task id="LOCAL-00053" summary="add addsub_assign support to assembely code generation">
+      <option name="closed" value="true" />
+      <created>1713190774163</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1713190774163</updated>
+    </task>
+    <task id="LOCAL-00054" summary="simplift ++/-- (no need to process postfix)">
+      <option name="closed" value="true" />
+      <created>1713191224020</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1713191224020</updated>
+    </task>
+    <task id="LOCAL-00055" summary="add ++/-- support to assembly code generation">
+      <option name="closed" value="true" />
+      <created>1713191263271</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1713191263271</updated>
+    </task>
+    <task id="LOCAL-00056" summary="legacy support">
+      <option name="closed" value="true" />
+      <created>1713191359798</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1713191359798</updated>
+    </task>
+    <task id="LOCAL-00057" summary="++/-- legacy support">
+      <option name="closed" value="true" />
+      <created>1713191401211</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1713191401211</updated>
+    </task>
+    <task id="LOCAL-00058" summary="add or support to assembly code generation">
+      <option name="closed" value="true" />
+      <created>1713192462443</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1713192462443</updated>
+    </task>
+    <task id="LOCAL-00059" summary="add and support to assembly code generation">
+      <option name="closed" value="true" />
+      <created>1713192614892</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1713192614893</updated>
+    </task>
+    <task id="LOCAL-00060" summary="add xor support to assembly code generation">
+      <option name="closed" value="true" />
+      <created>1713193069809</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1713193069809</updated>
+    </task>
+    <task id="LOCAL-00061" summary="remove debug print">
+      <option name="closed" value="true" />
+      <created>1713194243836</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1713194243836</updated>
+    </task>
+    <task id="LOCAL-00062" summary="add a todo: make register upperbound by coping things more to mem">
+      <option name="closed" value="true" />
+      <created>1713194275957</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1713194275957</updated>
+    </task>
+    <task id="LOCAL-00063" summary="delete legacy">
+      <option name="closed" value="true" />
+      <created>1713256184160</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1713256184160</updated>
+    </task>
+    <task id="LOCAL-00064" summary="MOV x,y,z to r0,r1,r2 while EXIT 0">
+      <option name="closed" value="true" />
+      <created>1713256270822</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1713256270822</updated>
+    </task>
+    <task id="LOCAL-00065" summary="EXIT 1 when error">
+      <option name="closed" value="true" />
+      <created>1713256287145</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1713256287146</updated>
+    </task>
+    <task id="LOCAL-00066" summary="print properly for assembly parser">
+      <option name="closed" value="true" />
+      <created>1713256324804</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1713256324804</updated>
+    </task>
+    <task id="LOCAL-00067" summary="push">
+      <option name="closed" value="true" />
+      <created>1713256351876</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1713256351876</updated>
+    </task>
+    <task id="LOCAL-00068" summary="print improve">
+      <option name="closed" value="true" />
+      <created>1713264487595</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1713264487595</updated>
+    </task>
+    <task id="LOCAL-00069" summary="print improve">
+      <option name="closed" value="true" />
+      <created>1713264501565</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1713264501565</updated>
+    </task>
+    <task id="LOCAL-00070" summary="combined file">
+      <option name="closed" value="true" />
+      <created>1713268815198</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1713268815198</updated>
+    </task>
+    <task id="LOCAL-00071" summary="handled the div by 0 error separately">
+      <option name="closed" value="true" />
+      <created>1713270430578</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1713270430578</updated>
+    </task>
+    <task id="LOCAL-00072" summary="handled the div by 0 error separately">
+      <option name="closed" value="true" />
+      <created>1713270524888</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1713270524890</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="stable_dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="getmem function" />
+    <MESSAGE value="getmem function return pos*4&#10;(from pos)" />
+    <MESSAGE value="simple assembly code generation&#10;(ID, INt, ASSIGN, ADDSUB, without dealing with register)" />
+    <MESSAGE value="REG construct" />
+    <MESSAGE value="update assign and addsub to generate assmebly code" />
+    <MESSAGE value="fixed a bug(assign ry wrong)" />
+    <MESSAGE value="add muldiv support to assembely code generation" />
+    <MESSAGE value="add addsub_assign support to assembely code generation" />
+    <MESSAGE value="simplift ++/-- (no need to process postfix)" />
+    <MESSAGE value="add ++/-- support to assembly code generation" />
+    <MESSAGE value="legacy support" />
+    <MESSAGE value="++/-- legacy support" />
+    <MESSAGE value="add or support to assembly code generation" />
+    <MESSAGE value="add and support to assembly code generation" />
+    <MESSAGE value="add xor support to assembly code generation" />
+    <MESSAGE value="remove debug print" />
+    <MESSAGE value="add a todo: make register upperbound by coping things more to mem" />
+    <MESSAGE value="delete legacy" />
+    <MESSAGE value="MOV x,y,z to r0,r1,r2 while EXIT 0" />
+    <MESSAGE value="EXIT 1 when error" />
+    <MESSAGE value="print properly for assembly parser" />
+    <MESSAGE value="push" />
+    <MESSAGE value="print improve" />
+    <MESSAGE value="combined file" />
+    <MESSAGE value="handled the div by 0 error separately" />
+    <option name="LAST_COMMIT_MESSAGE" value="handled the div by 0 error separately" />
+  </component>
+</project>
